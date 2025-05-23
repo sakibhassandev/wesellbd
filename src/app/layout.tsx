@@ -3,6 +3,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import StoreProvider from "@/store/StoreProvider";
+import { AppContextProvider } from "@/contexts/AppContext";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "WeSell BD",
@@ -16,14 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <StoreProvider>
-        <html lang="en">
-          <body className={`antialiased`}>
-            <Header />
-            {children}
-          </body>
-        </html>
-      </StoreProvider>
+      <AppContextProvider>
+        <StoreProvider>
+          <html lang="en">
+            <body className={`antialiased`}>
+              <Header />
+              {children}
+              <ToastContainer className="text-sm" />
+            </body>
+          </html>
+        </StoreProvider>
+      </AppContextProvider>
     </ClerkProvider>
   );
 }

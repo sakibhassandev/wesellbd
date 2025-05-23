@@ -8,10 +8,16 @@ import { CartState, WishListState } from "@/lib/definitions";
 import { RootState } from "@/store";
 import Image from "next/image";
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/nextjs";
-import { Heart, ShoppingBagIcon, ShoppingCart, User } from "lucide-react";
+import {
+  Heart,
+  LockIcon,
+  ShoppingBagIcon,
+  ShoppingCart,
+  User,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { SearchModal } from "./SearchModal";
-import { useRouter } from "next/navigation";
+import { useAppContext } from "@/contexts/AppContext";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -25,7 +31,7 @@ export const Header = () => {
   const wishlistCount = wishList.reduce((acc: number, curr: WishListState) => {
     return acc + curr.quantity;
   }, 0);
-  const router = useRouter();
+  const { router, isAdmin } = useAppContext();
 
   return (
     <div className="sticky top-0 z-40 w-full shadow-md backdrop-blur bg-[#ffffff70]">
@@ -146,6 +152,15 @@ export const Header = () => {
           >
             <SignedIn>
               <UserButton>
+                {isAdmin && (
+                  <UserButton.MenuItems>
+                    <UserButton.Action
+                      label="Admin Dashboard"
+                      labelIcon={<LockIcon className="size-3" />}
+                      onClick={() => router.push("/admin")}
+                    />
+                  </UserButton.MenuItems>
+                )}
                 <UserButton.MenuItems>
                   <UserButton.Action
                     label="My Orders"

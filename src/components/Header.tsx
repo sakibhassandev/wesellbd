@@ -19,6 +19,25 @@ import { Button } from "./ui/button";
 import { SearchModal } from "./SearchModal";
 import { useAppContext } from "@/contexts/AppContext";
 
+const navLinks = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Shop",
+    link: "/shop",
+  },
+  {
+    name: "About",
+    link: "/about",
+  },
+  {
+    name: "Contact Us",
+    link: "/contact",
+  },
+];
+
 export const Header = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cartItems);
@@ -61,45 +80,17 @@ export const Header = () => {
             isDropdown ? "h-[171px]" : "h-0"
           } overflow-y-hidden transition-all max-md:w-full md:h-auto ease-in-out duration-200 md:static absolute top-14 md:bg-inherit bg-white md:shadow-none shadow-[0px_5px_10px_#14303a15] md:w-['auto'] md:px-0 px-4 md:flex left-0 justify-center gap-10 lg:gap-[75px]`}
         >
-          <li className="md:p-[unset] py-2 md:border-none border-b border-[#d6d9dc]">
-            <Link
-              onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
-              href="/"
-              className="font-medium relative before:content-[''] before:bottom-0 before:absolute before:w-0 hover:before:w-full  before:ease-in-out before:transition-all before:duration-300 before:bg-[#83AAC9] before:h-[2px]"
-            >
-              Home
-            </Link>
-          </li>
-
-          <li className="md:p-[unset] py-2 md:border-none border-b border-[#d6d9dc]">
-            <Link
-              onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
-              href="/shop"
-              className="font-medium relative before:content-[''] before:bottom-0 before:absolute before:w-0 hover:before:w-full  before:ease-in-out before:transition-all before:duration-300 before:bg-[#83AAC9] before:h-[2px]"
-            >
-              Shop
-            </Link>
-          </li>
-
-          <li className="md:p-[unset] py-2 md:border-none border-b border-[#d6d9dc]">
-            <Link
-              onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
-              href="/about"
-              className="font-medium relative before:content-[''] before:bottom-0 before:absolute before:w-0 hover:before:w-full  before:ease-in-out before:transition-all before:duration-300 before:bg-[#83AAC9] before:h-[2px]"
-            >
-              About
-            </Link>
-          </li>
-
-          <li className="md:p-[unset] py-2">
-            <Link
-              onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
-              href="/contact"
-              className="font-medium relative before:content-[''] before:bottom-0 before:absolute before:w-0 hover:before:w-full  before:ease-in-out before:transition-all before:duration-300 before:bg-[#83AAC9] before:h-[2px]"
-            >
-              Contact
-            </Link>
-          </li>
+          {navLinks.map((link, index) => (
+            <li className="md:p-[unset] py-2 md:border-none border-b border-[#d6d9dc]">
+              <Link
+                onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
+                href={link.link}
+                className="font-medium relative before:content-[''] before:bottom-0 before:absolute before:w-0 hover:before:w-full  before:ease-in-out before:transition-all before:duration-300 before:bg-[#83AAC9] before:h-[2px]"
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <div className="flex items-center icons gap-3 xsm:gap-5 lg:gap-11">

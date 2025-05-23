@@ -60,7 +60,7 @@ export const Header = () => {
           className="flex flex-col items-center gap-1 xsm:flex-row logo"
         >
           <Image
-            src={"/logo.png"}
+            src={"/assets/images/logos/logo.webp"}
             alt="logo"
             width={50}
             height={50}

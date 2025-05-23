@@ -23,7 +23,7 @@ type Slide = {
 const slides: Slide[] = [
   {
     id: 1,
-    image: "/dummy_hero.avif",
+    image: "/assets/images/dummy_hero.webp",
     title: "Summer Collection 2025",
     description: "Discover our latest styles for the season",
     ctaText: "Shop Now",
@@ -33,7 +33,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    image: "/dummy_hero.avif",
+    image: "/assets/images/dummy_hero.webp",
     title: "Exclusive Limited Edition",
     description: "Premium quality, designed for comfort",
     ctaText: "Buy Now",
@@ -43,7 +43,7 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    image: "/dummy_hero.avif",
+    image: "/assets/images/dummy_hero.webp",
     title: "New Arrivals",
     description: "Be the first to experience our newest products",
     ctaText: "Explore",
@@ -113,7 +113,7 @@ export default function HeroCarousel() {
             >
               <div className="relative h-[80vh] md:h-[85vh] w-full overflow-hidden">
                 <Image
-                  src={slide.image || "/banner.png"}
+                  src={slide.image || "/assets/images/logos/banner.webp"}
                   alt={slide.title}
                   fill
                   priority

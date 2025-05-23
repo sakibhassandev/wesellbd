@@ -80,8 +80,11 @@ export const Header = () => {
             isDropdown ? "h-[171px]" : "h-0"
           } overflow-y-hidden transition-all max-md:w-full md:h-auto ease-in-out duration-200 md:static absolute top-14 md:bg-inherit bg-white md:shadow-none shadow-[0px_5px_10px_#14303a15] md:w-['auto'] md:px-0 px-4 md:flex left-0 justify-center gap-10 lg:gap-[75px]`}
         >
-          {navLinks.map((link, index) => (
-            <li className="md:p-[unset] py-2 md:border-none border-b border-[#d6d9dc]">
+          {navLinks.map((link) => (
+            <li
+              className="md:p-[unset] py-2 md:border-none border-b border-[#d6d9dc]"
+              key={link.name}
+            >
               <Link
                 onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
                 href={link.link}

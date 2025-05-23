@@ -7,22 +7,25 @@ import { isMiniCartOpen } from "@/store/slices/miniCartSlice";
 import { CartState, WishListState } from "@/lib/definitions";
 import { RootState } from "@/store";
 import Image from "next/image";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Heart, ShoppingCart, User } from "lucide-react";
+import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/nextjs";
+import { Heart, ShoppingBagIcon, ShoppingCart, User } from "lucide-react";
 import { Button } from "./ui/button";
 import { SearchModal } from "./SearchModal";
+import { useRouter } from "next/navigation";
 
 export const Header = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cartItems);
   const wishList = useSelector((state: RootState) => state.wishList);
   const [isDropdown, setIsDropDown] = useState(false);
+  const { openSignIn } = useClerk();
   const cartCount = cartItems.reduce((acc: number, curr: CartState) => {
     return acc + curr.quantity;
   }, 0);
   const wishlistCount = wishList.reduce((acc: number, curr: WishListState) => {
     return acc + curr.quantity;
   }, 0);
+  const router = useRouter();
 
   return (
     <div className="sticky top-0 z-40 w-full shadow-md backdrop-blur bg-[#ffffff70]">
@@ -142,12 +145,25 @@ export const Header = () => {
             variant={"ghost"}
           >
             <SignedIn>
-              <UserButton />
+              <UserButton>
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    label="My Orders"
+                    labelIcon={<ShoppingBagIcon className="size-3" />}
+                    onClick={() => router.push("/my-orders")}
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
             </SignedIn>
+
             <SignedOut>
-              <SignInButton>
-                <User className="w-5 md:w-6 cursor-pointer ease-in-out transition-all duration-200 hover:text-[#1c1d25] user" />
-              </SignInButton>
+              <User
+                className="w-5 md:w-6 cursor-pointer ease-in-out transition-all duration-200 hover:text-[#1c1d25] user"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openSignIn();
+                }}
+              />
             </SignedOut>
           </Button>
 

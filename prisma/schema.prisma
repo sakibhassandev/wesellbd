@@ -94,7 +94,7 @@ model Order {
     status         OrderStatus   @default(PENDING)
     totalAmount    Float
     discountAmount Float         @default(0)
-    address        String
+    address        Json          @default("{}")
     paymentMethod  paymentMethod
     couponId       String?       @db.ObjectId
     coupon         Coupon?       @relation(fields: [couponId], references: [id])

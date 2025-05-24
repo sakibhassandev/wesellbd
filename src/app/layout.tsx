@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import StoreProvider from "@/store/StoreProvider";
 import { AppContextProvider } from "@/contexts/AppContext";
 import { ToastContainer } from "react-toastify";
+import { MiniCart } from "@/components/cart/MiniCart";
 
 export const metadata: Metadata = {
   title: "WeSell BD",
@@ -23,6 +24,7 @@ export default function RootLayout({
           <html lang="en">
             <body className={`antialiased`}>
               <Header />
+              <MiniCart />
               {children}
               <ToastContainer className="text-sm" />
             </body>

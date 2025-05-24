@@ -7,110 +7,12 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-enum Role {
-    admin
-    user
-}
-
 model User {
-    id        String   @id @default(auto()) @map("_id") @db.ObjectId
-    userId    String   @unique
+    id        String   @id @map("_id")
     firstName String
     lastName  String
     email     String   @unique
     imageUrl  String
     cartItems Json     @default("{}")
     createdAt DateTime @default(now())
-}
-
-model Order {
-    id             String      @id @default(auto()) @map("_id") @db.ObjectId
-    orderDate      DateTime    @default(now())
-    userId         String      @db.ObjectId
-    orderItems     OrderItem[]
-    paymentMethod  String
-    total          Float
-    status         String
-    trackingNumber String
-    deliveryCharge Float
-    isReviewed     Boolean     @default(false)
-    createdAt      DateTime    @default(now())
-    updatedAt      DateTime    @updatedAt
-}
-
-model OrderItem {
-    id        String  @id @default(auto()) @map("_id") @db.ObjectId
-    orderId   String  @db.ObjectId
-    productId String  @db.ObjectId
-    order     Order   @relation(fields: [orderId], references: [id])
-    product   Product @relation(fields: [productId], references: [id])
-    quantity  Int
-    size      String
-    color     String
-}
-
-model Review {
-    id        String   @id @default(auto()) @map("_id") @db.ObjectId
-    name      String
-    message   String
-    rating    Int
-    authorId  String   @db.ObjectId
-    productId String   @db.ObjectId
-    product   Product  @relation(fields: [productId], references: [id])
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
-model Address {
-    id             String   @id @default(auto()) @map("_id") @db.ObjectId
-    firstName      String
-    lastName       String
-    companyName    String?
-    country        String
-    street         String
-    state          String
-    city           String
-    zip            String
-    phone          String
-    email          String
-    additionalInfo String?
-    userId         String   @db.ObjectId
-    createdAt      DateTime @default(now())
-    updatedAt      DateTime @updatedAt
-}
-
-model Colors {
-    id        String  @id @default(auto()) @map("_id") @db.ObjectId
-    name      String
-    image     String
-    publicId  String
-    productId String  @db.ObjectId
-    product   Product @relation(fields: [productId], references: [id])
-}
-
-model ProductImages {
-    id        String   @id @default(auto()) @map("_id") @db.ObjectId
-    color     String
-    url       String[]
-    publicId  String[]
-    productId String   @db.ObjectId
-    product   Product  @relation(fields: [productId], references: [id])
-}
-
-model Product {
-    id          String          @id @default(auto()) @map("_id") @db.ObjectId
-    name        String
-    description String
-    sku         String?
-    categories  String[]
-    tags        String[]
-    reviews     Review[]
-    hasDiscount Int?
-    sizes       String[]
-    images      ProductImages[]
-    colors      Colors[]
-    orderItems  OrderItem[]
-    price       Float
-    createdAt   DateTime        @default(now())
-    updatedAt   DateTime        @updatedAt
 }

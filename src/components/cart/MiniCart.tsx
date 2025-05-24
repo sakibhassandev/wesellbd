@@ -79,7 +79,7 @@ export const MiniCart = () => {
           <div className="checkout p-[20px_20px_45px] bg-white border-t-2 border-[#eaeaef]">
             <div className="mb-7">
               <h4 className="inline-block text-lg font-medium">Subtotal:</h4>
-              <span className="text-[#B88E2F] font-semibold text-xl float-right">
+              <span className="text-[#1f1f1f] font-semibold text-xl float-right">
                 ${totalPrice.toFixed(2)}
               </span>
             </div>
@@ -87,14 +87,14 @@ export const MiniCart = () => {
               <Link
                 onClick={() => dispatch(isMiniCartOpen("closeMiniCart"))}
                 href="/cart"
-                className="capitalize rounded-sm p-[10px_30px] mb-4 text-white text-[15px] inline-block w-full ease-linear duration-300 font-medium text-center bg-[#B88E2F] hover:bg-[#96732B] relative z-10 "
+                className="capitalize rounded-sm p-[10px_30px] mb-4 text-white text-[15px] inline-block w-full ease-linear duration-300 font-medium text-center bg-[#83AAC9] hover:bg-[#8399C9] relative z-10 "
               >
                 view cart
               </Link>
               <Link
                 onClick={() => dispatch(isMiniCartOpen("closeMiniCart"))}
                 href="/checkout"
-                className="capitalize rounded-sm p-[10px_30px] text-[#03041c] hover:text-white text-[15px] inline-block w-full hover:bg-[#B88E2F]  ease-linear duration-300 font-medium text-center border-[#eaeaef] border relative z-10 "
+                className="capitalize rounded-sm p-[10px_30px] text-[#03041c] hover:text-white text-[15px] inline-block w-full hover:bg-[#83AAC9]  ease-linear duration-300 font-medium text-center border-[#eaeaef] border relative z-10 "
               >
                 checkout
               </Link>

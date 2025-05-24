@@ -32,12 +32,12 @@ export const MiniCartItem = ({
       <div className="content">
         <a
           href="/item/11232"
-          className="mb-3 hover:text-[#B88E2F] ease-out duration-300 text-sm font-medium"
+          className="mb-3 hover:text-[#83AAC9] ease-out duration-300 text-sm font-medium"
         >
           {name}
         </a>
         <div className="price-wrapper mb-2">
-          <span className="text-sm font-medium text-[#B88E2F]">${price}</span>
+          <span className="text-sm font-medium text-[#83AAC9]">${price}</span>
           <span className="text-xs text-[#525258] font-medium">
             x{quantity}
           </span>
@@ -59,7 +59,7 @@ export const MiniCartItem = ({
         }}
       >
         {
-          <X className="w-5 h-5 text-[#525258] hover:text-[#B88E2F] ease-out duration-300" />
+          <X className="w-5 h-5 text-[#525258] hover:text-[#83AAC9] ease-out duration-300" />
         }
       </button>
     </div>

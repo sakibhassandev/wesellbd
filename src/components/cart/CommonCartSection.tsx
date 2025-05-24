@@ -19,7 +19,7 @@ export const CommonCartSection = ({
       ) : (
         <div className="relative  xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] mx-auto overflow-x-auto">
           <div className="top rounded mb-8 p-[17px_37px] bg-[#F9F1E7]">
-            <p className="hover:text-[#B88E2F] w-max ease-out duration-300">
+            <p className="hover:text-[#83AAC9] w-max ease-out duration-300">
               <a href="/shop" className="flex items-center gap-2">
                 Continue Shopping <Reply className="text-xl" />
               </a>

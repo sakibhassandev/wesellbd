@@ -37,7 +37,7 @@ export const CartItem = ({
       <td className="px-6 py-4 text-center border-r border-[#eaedff]">
         <Link
           href={`/product-details/${id}`}
-          className="hover:text-[#B88E2F] ease-out duration-300"
+          className="hover:text-[#83AAC9] ease-out duration-300"
         >
           <span className="capitalize">Name: {name}</span> <br />
           <span className="capitalize">Color: {color}</span> <br />
@@ -58,7 +58,7 @@ export const CartItem = ({
                 theme: "light",
               });
             }}
-            className="w-6 h-6 hover:text-[#B88E2F] ease-out duration-300 p-1 rounded-full me-3"
+            className="w-6 h-6 hover:text-[#83AAC9] ease-out duration-300 p-1 rounded-full me-3"
             type="button"
           >
             <svg
@@ -82,7 +82,7 @@ export const CartItem = ({
               value={quantity}
               onChange={() => ""}
               id="first_product"
-              className=" w-14 border focus:border-[#B88E2F] ease-out duration-300 text-center outline-none text-sm rounded-lg block px-2.5 py-1 "
+              className=" w-14 border focus:border-[#83AAC9] ease-out duration-300 text-center outline-none text-sm rounded-lg block px-2.5 py-1 "
               required
             />
           </div>
@@ -95,7 +95,7 @@ export const CartItem = ({
                 theme: "light",
               });
             }}
-            className="w-6 hover:text-[#B88E2F] ease-out duration-300 h-6 p-1 rounded-full ms-3"
+            className="w-6 hover:text-[#83AAC9] ease-out duration-300 h-6 p-1 rounded-full ms-3"
             type="button"
           >
             <svg
@@ -121,7 +121,7 @@ export const CartItem = ({
       </td>
       <td className="px-6 text-center py-4 border-r border-[#eaedff]">
         <button
-          className="hover:text-[#B88E2F] ease-out duration-300"
+          className="hover:text-[#83AAC9] ease-out duration-300"
           onClick={() => {
             dispatch(removeAction({ id }));
             toast.error(`${name} remove from ${toastName}`, {

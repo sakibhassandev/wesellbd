@@ -61,7 +61,7 @@ const CartPage = () => {
               </ul>
               <Link
                 href="/checkout"
-                className="p-[16px_40px_18px] rounded-sm  text-white ease-out duration-300 bg-[#B88E2F] hover:bg-[#96732B] text-sm"
+                className="p-[16px_40px_18px] rounded-sm  text-white ease-out duration-300 bg-[#83AAC9] hover:bg-[#8399C9] text-sm"
               >
                 Proceed to checkout
               </Link>

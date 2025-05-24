@@ -20,16 +20,16 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <AppContextProvider>
-        <StoreProvider>
-          <html lang="en">
-            <body className={`antialiased`}>
+        <html lang="en">
+          <body className={`antialiased`}>
+            <StoreProvider>
               <Header />
               <MiniCart />
-              {children}
-              <ToastContainer className="text-sm" />
-            </body>
-          </html>
-        </StoreProvider>
+            </StoreProvider>
+            {children}
+            <ToastContainer className="text-sm" />
+          </body>
+        </html>
       </AppContextProvider>
     </ClerkProvider>
   );

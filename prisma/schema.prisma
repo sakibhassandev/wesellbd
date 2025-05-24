@@ -53,6 +53,7 @@ model Product {
     variants    ProductVariant[]
     reviews     Review[]
     orderItems  OrderItem[]
+    coupons     CouponProduct[]
 }
 
 model Category {
@@ -115,14 +116,24 @@ model OrderItem {
 }
 
 model Coupon {
-    id            String       @id @default(auto()) @map("_id") @db.ObjectId
-    code          String       @unique
-    discountType  DiscountType
-    discountValue Float
-    maxUsage      Int?
-    usedCount     Int          @default(0)
-    expiresAt     DateTime?
-    createdAt     DateTime     @default(now())
-    updatedAt     DateTime     @updatedAt
-    orders        Order[]
+    id                 String          @id @default(auto()) @map("_id") @db.ObjectId
+    code               String          @unique
+    discountType       DiscountType
+    discountValue      Float
+    maxUsage           Int?
+    usedCount          Int             @default(0)
+    expiresAt          DateTime?
+    createdAt          DateTime        @default(now())
+    updatedAt          DateTime        @updatedAt
+    orders             Order[]
+    applicableProducts CouponProduct[]
+    appliesToAll       Boolean         @default(true)
+}
+
+model CouponProduct {
+    id        String  @id @default(auto()) @map("_id") @db.ObjectId
+    coupon    Coupon  @relation(fields: [couponId], references: [id])
+    couponId  String  @db.ObjectId
+    product   Product @relation(fields: [productId], references: [id])
+    productId String  @db.ObjectId
 }
